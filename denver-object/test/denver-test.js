@@ -1,8 +1,11 @@
 var assert = require('chai').assert;
 var data = require('../lib/data');
+var { getBreweries } = require('../lib/denver');
 
-it.skip('should return an object where the keys are each brewerys name and the value is the average abv for that brewery', () => {
-  assert.equal(true, false)
+it('should return an object where the keys are each brewerys name and the value is the average abv for that brewery', () => {
+  const breweries = getBreweries(data);
+  assert.equal(breweries["Ratio Beerworks"], 6.2);
+  assert.equal(breweries["Great Divide"], 0);
 });
 
 it.skip('should return a list of each neighborhoods names', () => {
