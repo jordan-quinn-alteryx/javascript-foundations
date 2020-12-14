@@ -1,28 +1,58 @@
 var assert = require('chai').assert;
 var data = require('../lib/data');
-var { getBreweries } = require('../lib/denver');
+var { getBreweries, getNeighborhoods, getBuildingCategories, findLocation } = require('../lib/denver');
 
-it('should return an object where the keys are each brewerys name and the value is the average abv for that brewery', () => {
+
+describe('getBreweries', () => {
   const breweries = getBreweries(data);
-  assert.equal(breweries["Ratio Beerworks"], 6.2);
-  assert.equal(breweries["Great Divide"], 0);
+  
+  it('should return an object where the keys are each brewerys name and the value is the average abv for that brewery', () => {
+    assert.equal(breweries["Ratio Beerworks"], 6.2);
+  });
+
+  it('should return 0 for a brewery with no beers', () => {
+    assert.equal(breweries["Great Divide"], 0);
+  });
+
+  it('can round abv to the nearest tenth', () => {
+    assert.equal(breweries["Beryl's Beer Co."], 5.7)
+  });
 });
 
-it.skip('should return a list of each neighborhoods names', () => {
-  assert.equal(true, false)
+describe('getNeighborhoods', () => {
+  it('should return a list of each neighborhoods names', () => {
+    const neighborhoods = getNeighborhoods(data);
+    assert.deepEqual(neighborhoods, [
+      "LoDo",
+      "Five Points",
+      "Cap Hill", 
+      "RiNo", 
+      "Wash Park", 
+      "Uptown", 
+      "City Park",
+      "Highlands", 
+      "Golden Triangle",
+      "Platt Park"
+     ]);
+  })
 })
 
-it.skip('should be able to return a list of each building category', () => {
-  assert.equal(true, false)
-});
+describe('getBuildingCategories', ()=> {
+  it('should be able to return a list of each building category', () => {
+    const buildingCategories = getBuildingCategories(data)
+    assert.deepEqual(buildingCategories, ['commercial', 'historical', 'athletic', 'entertainment', 'medical'])
+  });
 
-it.skip('return a list with all restaurant names', () => {
-  assert.equal(true, false)
-});
 
-it.skip('be able to find the museum of nature and science', () => {
-  assert.equal(true, false)
 })
+
+describe('findLocation', () => {
+  it('be able to find the museum of nature and science', () => {
+    const location = findLocation("Denver Museum of Nature and Science", data);
+    assert.equal(location, { name: "Denver Museum of Nature and Science", floors: 5, completed: 1900, height: 54 })
+  })
+})
+
 
 it.skip('create a list of all breweries serving more than 14 beers', () => {
   assert.equal(true, false)
