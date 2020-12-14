@@ -49,7 +49,7 @@ describe('getBuildingCategories', ()=> {
 describe('findLocation', () => {
   it('be able to find the museum of nature and science', () => {
     const location = findLocation("Denver Museum of Nature and Science", data);
-    assert.equal(location, { name: "Denver Museum of Nature and Science", floors: 5, completed: 1900, height: 54 })
+    assert.deepEqual(location, { name: "Denver Museum of Nature and Science", floors: 5, completed: 1900, height: 54 })
   })
 })
 

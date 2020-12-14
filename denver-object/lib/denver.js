@@ -26,10 +26,13 @@ const findLocation = (locationName, data) => {
   const { buildings } = data;
   let location;
 
-  Object.keys(buildings).forEach(category => {
-    console.log({category})
-    location = buildings[category].find(item => item.name === locationName);
-  })
+  Object.keys(buildings).some(category => {
+    if (typeof location === 'undefined') {
+      location = buildings[category].find(item => item.name === locationName);
+    }
+    return typeof location !== 'undefined';
+  });
+
   return location;
 }
 
