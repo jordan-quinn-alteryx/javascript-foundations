@@ -1,6 +1,6 @@
 var assert = require('chai').assert;
 var data = require('../lib/data');
-var { getBreweries, getNeighborhoods, getBuildingCategories, findLocation } = require('../lib/denver');
+var { getBreweriesByBeerNumber, getBreweries, getNeighborhoods, getBuildingCategories, findLocation } = require('../lib/denver');
 
 
 describe('getBreweries', () => {
@@ -54,10 +54,13 @@ describe('findLocation', () => {
 })
 
 
-it.skip('create a list of all breweries serving more than 14 beers', () => {
-  assert.equal(true, false)
+describe('getBreweriesByBeerNumber', () => {
+  it('create a list of all breweries serving more than 14 beers', () => {
+    const listOfBreweries = getBreweriesByBeerNumber(14, data);
+    assert.equal(listOfBreweries.length, 3);
+  })
 })
 
 it.skip('return a list of all restaurants where the type is Dinner', () => {
-  assert.equal(true, false)
+  assert.equal(true, false);
 })

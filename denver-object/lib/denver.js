@@ -36,4 +36,12 @@ const findLocation = (locationName, data) => {
   return location;
 }
 
-module.exports = { getBreweries, getNeighborhoods, getBuildingCategories, findLocation };
+const getBreweriesByBeerNumber = (count, { breweries }) => {
+ return breweries.reduce((acc, brewery) => {
+    if (brewery.number_of_beers > count) {
+      acc.push(brewery.name)
+    }
+    return acc 
+ }, [])
+}
+module.exports = { getBreweries, getNeighborhoods, getBuildingCategories, findLocation, getBreweriesByBeerNumber };
