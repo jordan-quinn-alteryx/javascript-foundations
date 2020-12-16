@@ -4,7 +4,7 @@
   "description": "Practice programs for mastering the basics of JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --watch"
   },
   "author": "Turing School",
   "license": "MIT",
