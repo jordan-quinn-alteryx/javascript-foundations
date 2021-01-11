@@ -4,7 +4,7 @@ const jsMap = require("../lib/map");
 
 chai.should();
 
-const { expect, assert} = chai;
+const { expect, assert } = chai;
 
 describe('jsMap', () => {
   it('should exist', () => {
