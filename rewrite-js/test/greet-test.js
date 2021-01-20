@@ -37,12 +37,26 @@ describe('greet', () => {
       expect(arrayGreet(['Jill', 'Jayne', 'Gob'])).to.equal('Hello, Jill, Jayne, and Gob.');
     });
    
-
     it('should be able to handle ten names', () => {
       expect(arrayGreet(['Jill', 'Jayne', 'Gob', 'John', 'Paul', 'George', 'Ringo', 'Jimmy', 'Marylin', 'Temujin']))
         .to.equal('Hello, Jill, Jayne, Gob, John, Paul, George, Ringo, Jimmy, Marylin, and Temujin.');
     });
+
+    describe('should be able to handle a mix of shouting and not shouting', () => {
+      it('should be able to handle a single shout and multiple regular cased names', () => {
+        expect(arrayGreet(['Jill', 'Jayne', 'GOB'])).to.equal('Hello, Jill and Jayne. AND HELLO GOB!');
+      });
+    });
+    
+    describe('Escaped characters', () => {
+      it('should be able to handle entries that contain commas', () => {
+        expect(arrayGreet(['Jill', 'Jayne, Gob'])).to.equal('Hello, Jill, Jayne, and Gob.');
+      });
+
+      it('should be able to handle CSV combined values', () => {
+        expect(arrayGreet(["Bob", "\"Charlie, Dianne\""])).to.equal('Hello, Bob and Charlie, Dianne.');
+      });
+    })
   })
 })
-
 
